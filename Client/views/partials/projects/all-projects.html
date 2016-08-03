@@ -1,0 +1,125 @@
+<div class="container">
+    <h2 class="text-center">
+        Projects
+        <a href="#/projects/add" ng-show="vm.identity.isAuthenticated()"
+           class="btn btn-sm btn-primary pull-right">Add</a>
+    </h2>
+
+    <div ng-show="vm.identity.isAuthenticated()" class="row">
+        <!--OK SORTING-->
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="text-center">
+                    <label for="sort" class="control-label">Sort</label></div>
+                <div>
+                    <select class="form-control" required="required" ng-init="vm.request.orderBy='date'"
+                            ng-model="vm.request.orderBy" id="sort">
+                        <option value="name">Name</option>
+                        <option value="date">Date</option>
+                        <option value="collaborators">Total Users</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--OK OrderBy-->
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="text-center">
+                    <label for="order" class="control-label">Order</label>
+                </div>
+                <div>
+                    <select class="form-control" required="required" ng-init="vm.request.orderType='desc'"
+                            ng-model="vm.request.orderType" id="order">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--OK ONLY PUBLIC-->
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="text-center">
+                    <label for="onlyPublic" class="control-label">Only Public</label>
+                </div>
+                <div>
+                    <select class="form-control" required="required" ng-init="vm.request.onlyPublic='false'"
+                            ng-model="vm.request.onlyPublic" id="onlyPublic">
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--By EMAIL-->
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="text-center">
+                    <label for="user" class="control-label">Filter by email</label>
+                </div>
+                <div>
+                    <input type="text" class="form-control" ng-init="vm.request.byUser=''"
+                           ng-model="vm.request.byUser" id="user">
+                </div>
+            </div>
+        </div>
+        <!--by name and description-->
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="text-center">
+                    <label for="filter" class="control-label">Filter by email</label>
+                </div>
+                <div>
+                    <input type="text" class="form-control" ng-init="vm.request.filter=''"
+                           ng-model="vm.request.filter" id="filter">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" ng-show="vm.identity.isAuthenticated()">
+        <div class="col-lg-3">
+
+            <button class="btn btn-primary pull-left" ng-click="vm.filterProjects()">Filter</button>
+
+        </div>
+        <!--page control-->
+
+            <!--PageSize-->
+            <div class="col-lg-3">
+                <div class="form-group form-inline">
+
+                    <label for="pageSize" class="control-label">Page Size</label>
+                    <select class="form-control" required="required" ng-init="vm.request.pageSize='10'"
+                            ng-model="vm.request.pageSize" id="pageSize">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn btn-primary pull-right" ng-click="vm.prevPage()">&lt;&lt;</button>
+            </div>
+            <div class="col-lg-2">
+                <input type="number" ng-model="vm.request.page" class="form-control"/>
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-primary" ng-click="vm.nextPage()">&gt;&gt;</button>
+            </div>
+
+    </div>
+
+    <br/>
+
+    <div ng-show="vm.projects && vm.projects.length > 0">
+        <div all-projects/>
+    </div>
+    <div ng-hide="vm.projects && vm.projects.length > 0">
+        <h2 class="text-center">No results!</h2>
+    </div>
+</div>

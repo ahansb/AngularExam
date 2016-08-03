@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Welcome to Source Control System</h1>
+        <h2>Better than github!</h2>
+    </div>
+
+    <div class="row jumbotron">
+        <div class="col-md-4 text-center">
+            <div>
+                <strong>Users</strong>
+            </div>
+            <div>
+                <span>{{vm.stats.Users}}</span>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <div>
+                <strong>Projects</strong>
+            </div>
+            <div>
+                <span>{{vm.stats.Projects}}</span>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <div>
+                <strong>Commits</strong>
+            </div>
+            <div>
+                <span>{{vm.stats.Commits}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Latest Software Projects</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div all-projects />
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Latest Public Source Code Commits</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center">
+                            Id
+                        </th>
+                        <th class="text-center">
+                            User
+                        </th>
+                        <th class="text-center">
+                            Created On
+                        </th>
+                    </tr>
+                    <tr ng-repeat="commit in vm.publicCommits">
+                        <!--<td class="text-center">-->
+                            <!--<a href="#/commits/{{driver.id}}">{{commit.name}}</a>-->
+                        <!--</td>-->
+                        <td class="text-center">
+                            {{commit.Id}}
+                        </td>
+                        <td class="text-center">
+                            {{commit.UserName}}
+                        </td>
+                        <td class="text-center">
+                            {{commit.CreatedOn|beautifulDate}}
+                        </td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

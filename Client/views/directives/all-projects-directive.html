@@ -1,0 +1,45 @@
+<table class="table table-bordered">
+    <tr>
+        <th class="text-center">
+            Id
+        </th>
+        <th class="text-center">
+            Name
+        </th>
+        <th class="text-center">
+            License
+        </th>
+        <th>
+            Total Users
+        </th>
+        <th class="text-center">
+            Created On
+        </th>
+
+        <th class="text-center" ng-if="vm.identity && vm.identity.isAuthenticated()">
+            Is Mine
+        </th>
+    </tr>
+    <!--TODO:FIX-->
+    <tr ng-repeat="project in vm.projects" ng-class-even="'even-class'" ng-class-odd="'odd-class'">
+       
+        <td class="text-center">
+            <a href="#projects/{{project.Id}}">{{project.Id}}</a>
+        </td>
+        <td class="text-center">
+            {{project.Name}}
+        </td>
+        <td class="text-center">
+            {{project.License}}
+        </td>
+        <td class="text-center">
+            {{project.TotalUsers}}
+        </td>
+        <td class="text-center">
+            {{project.CreatedOn|beautifulDate}}
+        </td>
+        <td class="text-center" ng-if="vm.identity && vm.identity.isAuthenticated()">
+            <img ng-src="/img/{{trip.isMine ? 'ok.jpg' : 'no-ok.png'}}"
+        </td>
+    </tr>
+</table>
